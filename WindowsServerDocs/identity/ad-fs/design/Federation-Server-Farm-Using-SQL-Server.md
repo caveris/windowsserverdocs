@@ -17,7 +17,7 @@ ms.technology: identity-adfs
 This topology for Active Directory Federation Services \(AD FS\) differs from the federation server farm using Windows Internal Database \(WID\) deployment topology in that it does not replicate the data to each federation server in the farm. Instead, all federation servers in the farm can read and write data into a common database that is stored on a server running Microsoft SQL Server that is located in the corporate network.  
   
 > [!IMPORTANT]  
-> If you want to create an AD FS farm and use SQL Server to store your configuration data, you can use SQL Server 2008 and newer versions, including SQL Server 2012, and SQL Server 2014.  
+> If you want to create an AD FS farm and use SQL Server to store your configuration data, you can use SQL Server 2008 and newer versions, including SQL Server 2012, SQL Server 2014, SQL Server 2016 and SQL Server 2017
   
 ## Deployment considerations  
 This section describes various considerations about the intended audience, benefits, and limitations that are associated with this deployment topology.  
@@ -53,6 +53,10 @@ The following SQL server versions are supported with AD FS in Windows Server 201
 -   SQL Server 2012  
   
 -   SQL Server 2014  
+
+-   SQL Server 2016 
+
+-   SQL Server 2017 
   
 ## Server placement and network layout recommendations  
 Similar to the federation server farm with WID topology, all of the federation servers in the farm are configured to use one cluster Domain Name System \(DNS\) name \(which represents the Federation Service name\) and one cluster IP address as part of the Network Load Balancing \(NLB\) cluster configuration. This helps the NLB host allocate client requests to the individual federation servers. Federation server proxies can be used to proxy client requests to the federation server farm.  
@@ -64,7 +68,7 @@ The following illustration shows how the fictional Contoso Pharmaceuticals compa
 For more information about how to configure your networking environment for use with federation servers or web application proxies, see “Name Resolution Requirements” section in [AD FS Requirements](AD-FS-Requirements.md) and [Plan the Web Application Proxy Infrastructure (WAP)](https://technet.microsoft.com/library/dn383648.aspx).  
   
 ## High Availability Options for SQL Server Farms  
-In Windows Server 2012 R2, AD FS there are two new options to support high availability in AD FS farms using SQL Server.  
+In Windows Server 2012 R2, 2016 and 2019, AD FS there are two new options to support high availability in AD FS farms using SQL Server.  
   
 -   Support for SQL Server AlwaysOn Availability Groups  
   
